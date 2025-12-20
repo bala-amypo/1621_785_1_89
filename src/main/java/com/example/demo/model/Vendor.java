@@ -5,7 +5,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
-import jakarta.persistence.OneToOne;
+//import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.PrePersist;
 
@@ -23,8 +23,8 @@ public class Vendor {
     private String address;
     private LocalDateTime createdAt;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
+    // @OneToOne
+    // @JoinColumn(name = "user_id")
     private User user;
 
     public Vendor() {

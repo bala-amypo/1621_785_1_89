@@ -7,7 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.OneToOne;
+//import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.PrePersist;
 
@@ -18,8 +18,8 @@ public class Invoice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "vendor_id")
+    // @OneToOne
+    // @JoinColumn(name = "vendor_id")
     private Vendor vendor;
 
     private String invoiceNumber;
@@ -27,12 +27,12 @@ public class Invoice {
     private LocalDate invoiceDate;
     private String description;
 
-    @OneToOne
-    @JoinColumn(name = "category_id")
+    // @OneToOne
+    // @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToOne
-    @JoinColumn(name = "uploaded_by_id")
+    // @OneToOne
+    // @JoinColumn(name = "uploaded_by_id")
     private User uploadedBy;
 
     private LocalDateTime uploadedAt;

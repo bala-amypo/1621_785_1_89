@@ -27,8 +27,8 @@ public class User {
     private String role;
     private LocalDateTime createdAt;
 
-    @OneToOne
-    @JoinColumn(name = "favorite_vendor_id")
+  //  @OneToOne
+  //  @JoinColumn(name = "favorite_vendor_id")
     private Vendor favoriteVendor;
 
     public User() {
