@@ -16,11 +16,9 @@ public class CategorizationRule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @OneToOne
     @JoinColumn(name = "category_id")
     private Category category;
-
     private String keyword;
     private String matchType;
     private Integer priority;
