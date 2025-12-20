@@ -28,6 +28,6 @@ import com.example.demo.model.CategorizationRule;
 @Repository
 public interface CategorizationRuleRepository extends JpaRepository<CategorizationRule, Long> {
 
-    //List<CategorizationRule> findByKeywordContainingIgnoreCaseOrderByPriorityDesc(String keyword);
+    List<CategorizationRule> findByKeywordContainingIgnoreCaseOrderByPriorityDesc(String keyword);
 
 }
