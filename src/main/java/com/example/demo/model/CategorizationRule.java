@@ -3,12 +3,7 @@
 package com.example.demo.model;
 
 import java.time.LocalDateTime;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.PrePersist;
+import jakarta.persistence.*;
 
 @Entity
 public class CategorizationRule {
@@ -17,7 +12,7 @@ public class CategorizationRule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // store category reference as ID only (no relationship)
+    // FK stored as value only (NO relationship)
     private Long categoryId;
 
     private String keyword;
@@ -25,17 +20,7 @@ public class CategorizationRule {
     private Integer priority;
     private LocalDateTime createdAt;
 
-    public CategorizationRule() {
-    }
-
-    public CategorizationRule(Long id, Long categoryId, String keyword,
-                              String matchType, Integer priority) {
-        this.id = id;
-        this.categoryId = categoryId;
-        this.keyword = keyword;
-        this.matchType = matchType;
-        this.priority = priority;
-    }
+    public CategorizationRule() {}
 
     @PrePersist
     public void onCreate() {
@@ -46,24 +31,17 @@ public class CategorizationRule {
     public void setId(Long id) { this.id = id; }
 
     public Long getCategoryId() { return categoryId; }
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
-    }
+    public void setCategoryId(Long categoryId) { this.categoryId = categoryId; }
 
     public String getKeyword() { return keyword; }
-    public void setKeyword(String keyword) {
-        this.keyword = keyword;
-    }
+    public void setKeyword(String keyword) { this.keyword = keyword; }
 
     public String getMatchType() { return matchType; }
-    public void setMatchType(String matchType) {
-        this.matchType = matchType;
-    }
+    public void setMatchType(String matchType) { this.matchType = matchType; }
 
     public Integer getPriority() { return priority; }
-    public void setPriority(Integer priority) {
-        this.priority = priority;
-    }
+    public void setPriority(Integer priority) { this.priority = priority; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }
 }
+
