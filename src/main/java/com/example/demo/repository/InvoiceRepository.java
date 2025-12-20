@@ -34,9 +34,9 @@ import com.example.demo.model.User;
 @Repository
 public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
 
-   // List<Invoice> findByUploadedBy(User user);
+    List<Invoice> findByUploadedBy(User user);
 
-    //List<Invoice> findByAmountGreaterThan(Double amount);
+    List<Invoice> findByAmountGreaterThan(Double amount);
 
 }
 
