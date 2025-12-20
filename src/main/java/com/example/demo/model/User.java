@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
-//import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.PrePersist;
 
@@ -20,15 +20,15 @@ public class User {
 
     private String fullName;
 
-   // @Column(unique = true)
+    @Column(unique = true)
     private String email;
 
     private String password;
     private String role;
     private LocalDateTime createdAt;
 
-  //  @OneToOne
-  //  @JoinColumn(name = "favorite_vendor_id")
+   @OneToOne
+   @JoinColumn(name = "favorite_vendor_id")
     private Vendor favoriteVendor;
 
     public User() {
