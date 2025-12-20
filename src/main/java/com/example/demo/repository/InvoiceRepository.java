@@ -12,8 +12,8 @@ import com.example.demo.model.User;
 @Repository
 public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
 
-     List<Invoice> findByUploadedBy(User user);
+//      List<Invoice> findByUploadedBy(User user);
 
-    // @Query("SELECT i FROM Invoice i WHERE i.amount > ?1")
-     List<Invoice> findByAmountGreaterThanHql(Double amount);
-}
+//     // @Query("SELECT i FROM Invoice i WHERE i.amount > ?1")
+//      List<Invoice> findByAmountGreaterThanHql(Double amount);
+ }
