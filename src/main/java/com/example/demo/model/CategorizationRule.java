@@ -1,11 +1,3 @@
-// package com.example.demo.model;
-
-// public class CategorizationRule {
-    
-// }
-
-
-
 package com.example.demo.model;
 
 import java.time.LocalDateTime;
