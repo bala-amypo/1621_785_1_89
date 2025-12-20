@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.OneToOne;
+//import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.PrePersist;
 
@@ -14,8 +14,8 @@ public class CategorizationRule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
-    @JoinColumn(name = "category_id")
+    // @OneToOne
+    // @JoinColumn(name = "category_id")
     private Category category;
     private String keyword;
     private String matchType;
