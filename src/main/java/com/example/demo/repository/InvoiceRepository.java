@@ -1,11 +1,32 @@
+// package com.example.demo.repository;
+
+// import java.util.List;
+
+// import org.springframework.stereotype.Repository;
+// import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.data.jpa.repository.Query;
+// import org.springframework.data.repository.query.Param;
+
+// import com.example.demo.model.Invoice;
+// import com.example.demo.model.User;
+
+// @Repository
+// public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
+
+//     List<Invoice> findByUploadedBy(User user);
+
+//     @Query("SELECT i FROM Invoice i WHERE i.amount > :amount")
+//     List<Invoice> findByAmountGreaterThanHql(@Param("amount") Double amount);
+
+// }
+
+
 package com.example.demo.repository;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import com.example.demo.model.Invoice;
 import com.example.demo.model.User;
@@ -15,7 +36,9 @@ public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
 
     List<Invoice> findByUploadedBy(User user);
 
-    @Query("SELECT i FROM Invoice i WHERE i.amount > :amount")
-    List<Invoice> findByAmountGreaterThanHql(@Param("amount") Double amount);
+    List<Invoice> findByAmountGreaterThan(Double amount);
 
 }
+
+
+
