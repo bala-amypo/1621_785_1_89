@@ -45,7 +45,7 @@ public class InvoiceController {
     }
 
     // GET /api/invoices/{invoiceId}
-    @GetMapping("/{invoiceId}")
+    @GetMapping("ig/{invoiceId}")
     public Invoice getInvoice(@PathVariable Long invoiceId) {
         return invoiceService.getInvoice(invoiceId);
     }
