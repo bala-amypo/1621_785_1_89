@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
-import jakarta.persistence.OneToOne;
+//import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.PrePersist;
 
@@ -20,7 +20,7 @@ public class User {
 
     private String fullName;
 
-    @Column(unique = true)
+   // @Column(unique = true)
     private String email;
 
     private String password;
