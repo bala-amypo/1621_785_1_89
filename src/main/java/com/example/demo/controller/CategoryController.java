@@ -36,6 +36,6 @@ public class CategoryController {
     // GET /api/categories/{id}
     @GetMapping("git/{id}")
     public Category getCategoryById(@PathVariable Long id) {
-        return categoryService.getCategoryById(id);
+        return categoryService.getCategory(id);
     }
 }
