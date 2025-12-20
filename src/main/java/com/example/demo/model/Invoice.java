@@ -1,98 +1,98 @@
-package com.example.demo.model;
+// package com.example.demo.model;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+// import java.time.LocalDate;
+// import java.time.LocalDateTime;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.PrePersist;
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.Id;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.OneToOne;
+// import jakarta.persistence.JoinColumn;
+// import jakarta.persistence.PrePersist;
 
-@Entity
-public class Invoice {
+// @Entity
+// public class Invoice {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "vendor_id")
-    private Vendor vendor;
+//     @OneToOne
+//     @JoinColumn(name = "vendor_id")
+//     private Vendor vendor;
 
-    private String invoiceNumber;
-    private Double amount;
-    private LocalDate invoiceDate;
-    private String description;
+//     private String invoiceNumber;
+//     private Double amount;
+//     private LocalDate invoiceDate;
+//     private String description;
 
-    @OneToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+//     @OneToOne
+//     @JoinColumn(name = "category_id")
+//     private Category category;
 
-    @OneToOne
-    @JoinColumn(name = "uploaded_by_id")
-    private User uploadedBy;
+//     @OneToOne
+//     @JoinColumn(name = "uploaded_by_id")
+//     private User uploadedBy;
 
-    private LocalDateTime uploadedAt;
+//     private LocalDateTime uploadedAt;
 
-    public Invoice() {
-    }
+//     public Invoice() {
+//     }
 
-    public Invoice(Long id, Vendor vendor, String invoiceNumber,
-                   Double amount, LocalDate invoiceDate,
-                   String description, Category category,
-                   User uploadedBy) {
-        this.id = id;
-        this.vendor = vendor;
-        this.invoiceNumber = invoiceNumber;
-        this.amount = amount;
-        this.invoiceDate = invoiceDate;
-        this.description = description;
-        this.category = category;
-        this.uploadedBy = uploadedBy;
-    }
+//     public Invoice(Long id, Vendor vendor, String invoiceNumber,
+//                    Double amount, LocalDate invoiceDate,
+//                    String description, Category category,
+//                    User uploadedBy) {
+//         this.id = id;
+//         this.vendor = vendor;
+//         this.invoiceNumber = invoiceNumber;
+//         this.amount = amount;
+//         this.invoiceDate = invoiceDate;
+//         this.description = description;
+//         this.category = category;
+//         this.uploadedBy = uploadedBy;
+//     }
 
-    @PrePersist
-    public void onCreate() {
-        this.uploadedAt = LocalDateTime.now();
-    }
+//     @PrePersist
+//     public void onCreate() {
+//         this.uploadedAt = LocalDateTime.now();
+//     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+//     public Long getId() { return id; }
+//     public void setId(Long id) { this.id = id; }
 
-    public Vendor getVendor() { return vendor; }
-    public void setVendor(Vendor vendor) { this.vendor = vendor; }
+//     public Vendor getVendor() { return vendor; }
+//     public void setVendor(Vendor vendor) { this.vendor = vendor; }
 
-    public String getInvoiceNumber() { return invoiceNumber; }
-    public void setInvoiceNumber(String invoiceNumber) {
-        this.invoiceNumber = invoiceNumber;
-    }
+//     public String getInvoiceNumber() { return invoiceNumber; }
+//     public void setInvoiceNumber(String invoiceNumber) {
+//         this.invoiceNumber = invoiceNumber;
+//     }
 
-    public Double getAmount() { return amount; }
-    public void setAmount(Double amount) { this.amount = amount; }
+//     public Double getAmount() { return amount; }
+//     public void setAmount(Double amount) { this.amount = amount; }
 
-    public LocalDate getInvoiceDate() { return invoiceDate; }
-    public void setInvoiceDate(LocalDate invoiceDate) {
-        this.invoiceDate = invoiceDate;
-    }
+//     public LocalDate getInvoiceDate() { return invoiceDate; }
+//     public void setInvoiceDate(LocalDate invoiceDate) {
+//         this.invoiceDate = invoiceDate;
+//     }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) {
-        this.description = description;
-    }
+//     public String getDescription() { return description; }
+//     public void setDescription(String description) {
+//         this.description = description;
+//     }
 
-    public Category getCategory() { return category; }
-    public void setCategory(Category category) {
-        this.category = category;
-    }
+//     public Category getCategory() { return category; }
+//     public void setCategory(Category category) {
+//         this.category = category;
+//     }
 
-    public User getUploadedBy() { return uploadedBy; }
-    public void setUploadedBy(User uploadedBy) {
-        this.uploadedBy = uploadedBy;
-    }
+//     public User getUploadedBy() { return uploadedBy; }
+//     public void setUploadedBy(User uploadedBy) {
+//         this.uploadedBy = uploadedBy;
+//     }
 
-    public LocalDateTime getUploadedAt() { return uploadedAt; }
-}
+//     public LocalDateTime getUploadedAt() { return uploadedAt; }
+// }
 
