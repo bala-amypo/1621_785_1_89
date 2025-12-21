@@ -1,27 +1,23 @@
-
-
 package com.example.demo.model;
-
 import java.time.LocalDateTime;
-import jakarta.persistence.*;
-
+// import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+import jakarta.persistence.PrePersist;
 @Entity
 public class CategorizationRule {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    // FK stored as value only (NO relationship)
     private Long categoryId;
-
     private String keyword;
     private String matchType;
     private Integer priority;
     private LocalDateTime createdAt;
-
     public CategorizationRule() {}
-
     @PrePersist
     public void onCreate() {
         this.createdAt = LocalDateTime.now();
