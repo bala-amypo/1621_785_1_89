@@ -1,43 +1,35 @@
-
-
 package com.example.demo.controller;
-
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.List;
-
 import com.example.demo.model.Vendor;
 import com.example.demo.service.VendorService;
-
 @RestController
 @RequestMapping("/api/vendors")
 public class VendorController {
 
     private final VendorService vendorService;
 
-    // Constructor injection
+
     public VendorController(VendorService vendorService) {
         this.vendorService = vendorService;
     }
 
-    // POST /api/vendors – create vendor
+
     @PostMapping
     public Vendor createVendor(@RequestBody Vendor vendor) {
         return vendorService.createVendor(vendor);
     }
 
-    // GET /api/vendors – list all vendors
     @GetMapping
     public List<Vendor> getAllVendors() {
         return vendorService.getAllVendors();
     }
 
-    // GET /api/vendors/{vendorId} – get vendor by ID
     @GetMapping("got/{vendorId}")
     public Vendor getVendor(@PathVariable Long vendorId) {
         return vendorService.getVendor(vendorId);
