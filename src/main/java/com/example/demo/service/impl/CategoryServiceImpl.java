@@ -1,11 +1,9 @@
 package com.example.demo.service.impl;
-
 import org.springframework.stereotype.Service;
 import com.example.demo.service.CategoryService;
 import com.example.demo.model.Category;
 import com.example.demo.repository.CategoryRepository;
 import java.util.List;
-
 @Service
 public class CategoryServiceImpl implements CategoryService {
 

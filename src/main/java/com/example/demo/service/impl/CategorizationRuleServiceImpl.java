@@ -1,15 +1,11 @@
-
 package com.example.demo.service.impl;
-
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.example.demo.model.CategorizationRule;
 import com.example.demo.repository.CategorizationRuleRepository;
 import com.example.demo.service.CategorizationRuleService;
-
 @Service
-public class CategorizationRuleServiceImpl
-        implements CategorizationRuleService {
+public class CategorizationRuleServiceImpl implements CategorizationRuleService {
 
     private final CategorizationRuleRepository ruleRepository;
 
@@ -19,8 +15,7 @@ public class CategorizationRuleServiceImpl
     }
 
     @Override
-    public CategorizationRule createRule(Long categoryId,
-                                         CategorizationRule rule) {
+    public CategorizationRule createRule(Long categoryId,CategorizationRule rule) {
         rule.setCategoryId(categoryId);
         return ruleRepository.save(rule);
     }
