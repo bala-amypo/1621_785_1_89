@@ -18,6 +18,8 @@ public class User {
     private String role;
     private LocalDateTime createdAt;
 
+    
+
     public User() {
     }
 
