@@ -14,6 +14,7 @@ public class User {
     private String fullName;
     @Column(unique = true)
     private String email;
+    @S
     private String password;
     private String role;
     private LocalDateTime createdAt;
