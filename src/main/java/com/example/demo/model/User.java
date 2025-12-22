@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
 import jakarta.persistence.PrePersist;
+import jakarta.validation.constraints.Size;
 @Entity
 public class User {
     @Id
@@ -14,7 +15,7 @@ public class User {
     private String fullName;
     @Column(unique = true)
     private String email;
-    @S
+    @Size(min=8)
     private String password;
     private String role;
     private LocalDateTime createdAt;
