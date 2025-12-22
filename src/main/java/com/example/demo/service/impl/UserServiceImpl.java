@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User registerUser(User user) {
         if(userRepository.existsById(user.getId())){
-            throw ResourceNotFoundException("UserId already exists");
+            throw new ResourceNotFoundException("UserId already exists");
         }
         return userRepository.save(user);
     }
