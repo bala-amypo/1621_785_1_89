@@ -14,7 +14,6 @@ public class Vendor {
 
     @Column(unique = true)
     private String vendorName;
-
     private String contactEmail;
     private String address;
     private LocalDateTime createdAt;
