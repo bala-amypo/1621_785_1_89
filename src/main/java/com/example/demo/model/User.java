@@ -6,24 +6,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
 import jakarta.persistence.PrePersist;
-
 @Entity
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String fullName;
-
     @Column(unique = true)
     private String email;
-
     private String password;
     private String role;
     private LocalDateTime createdAt;
-
-
-
 
     public User() {
     }
