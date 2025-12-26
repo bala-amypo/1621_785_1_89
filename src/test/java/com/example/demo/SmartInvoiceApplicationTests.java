@@ -1,5 +1,4 @@
 package com.example.demo;
-
 import com.example.demo.dto.AuthResponse;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.*;
@@ -25,13 +24,11 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import java.lang.reflect.Modifier;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
