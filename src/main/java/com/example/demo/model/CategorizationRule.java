@@ -9,8 +9,15 @@ public class CategorizationRule {
     private String keyword;
     private String matchType;
     private Integer priority;
-    @ManyToOne
-    private Category category;
+
+@ManyToOne
+@JoinColumn(name = "category_id")
+// @JsonIgnore
+private Category category;
+
+
+    // @ManyToOne
+    // private Category category;
     private LocalDateTime createdAt;
     @PrePersist
     public void prePersist() {
