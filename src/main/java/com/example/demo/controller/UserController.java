@@ -36,6 +36,7 @@
 
 
 
+
 package com.example.demo.controller;
 
 import com.example.demo.model.User;
@@ -57,5 +58,13 @@ public class UserController {
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User savedUser = userService.registerUser(user);
         return ResponseEntity.ok(savedUser);
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUser(@PathVariable Long id) {
+        // Basic implementation for completeness
+        User user = new User();
+        user.setId(id);
+        return ResponseEntity.ok(user);
     }
 }

@@ -39,6 +39,8 @@
 // }
 
 
+
+
 package com.example.demo.controller;
 
 import com.example.demo.model.Category;
@@ -57,7 +59,14 @@ public class CategoryController {
     }
     
     @PostMapping
-    public ResponseEntity<String> createCategory(@RequestBody Category category) {
-        return ResponseEntity.ok("Category created");
+    public ResponseEntity<Category> createCategory(@RequestBody Category category) {
+        Category savedCategory = categoryService.createCategory(category);
+        return ResponseEntity.ok(savedCategory);
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<Category> getCategory(@PathVariable Long id) {
+        Category category = categoryService.findById(id);
+        return ResponseEntity.ok(category);
     }
 }

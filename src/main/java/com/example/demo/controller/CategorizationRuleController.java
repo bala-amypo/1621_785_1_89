@@ -31,6 +31,8 @@
 // }
 
 
+
+
 package com.example.demo.controller;
 
 import com.example.demo.model.CategorizationRule;
@@ -49,7 +51,14 @@ public class CategorizationRuleController {
     }
     
     @PostMapping
-    public ResponseEntity<String> createRule(@RequestBody CategorizationRule rule) {
-        return ResponseEntity.ok("Rule created");
+    public ResponseEntity<CategorizationRule> createRule(@RequestBody CategorizationRule rule) {
+        CategorizationRule savedRule = ruleService.createRule(rule);
+        return ResponseEntity.ok(savedRule);
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<CategorizationRule> getRule(@PathVariable Long id) {
+        CategorizationRule rule = ruleService.findById(id);
+        return ResponseEntity.ok(rule);
     }
 }
