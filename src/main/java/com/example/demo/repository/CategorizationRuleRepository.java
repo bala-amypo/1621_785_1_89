@@ -1,12 +1,33 @@
+// package com.example.demo.repository;
+// import java.util.List;
+// import org.springframework.data.jpa.repository.JpaRepository;
+// import com.example.demo.model.CategorizationRule;
+
+// public interface CategorizationRuleRepository extends JpaRepository<CategorizationRule, Long> {
+
+//     List<CategorizationRule> findByCategoryId(Long categoryId);
+// }
+
+
+
 package com.example.demo.repository;
-import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.example.demo.model.CategorizationRule;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
-public interface CategorizationRuleRepository extends JpaRepository<CategorizationRule, Long> {
+import java.util.Collections;
+import java.util.List;
 
-    List<CategorizationRule> findByCategoryId(Long categoryId);
+public interface CategorizationRuleRepository
+        extends JpaRepository<CategorizationRule, Long> {
+    List<CategorizationRule> findByCategoryIdOrderByPriorityDesc(Long categoryId);
+    default List<CategorizationRule> findMatchingRulesByDescription(String description) {
+        return Collections.emptyList(); 
+    }
+    @Query("""
+        SELECT r FROM CategorizationRule r
+        WHERE LOWER(r.keyword) LIKE LOWER(CONCAT('%', :keyword, '%'))
+    """)
+    List<CategorizationRule> findByKeywordContainingIgnoreCase(String keyword);
 }
-
-
-
