@@ -10,10 +10,10 @@ public class CategorizationRule {
     private String matchType;
     private Integer priority;
 
-@ManyToOne
-@JoinColumn(name = "category_id")
-// @JsonIgnore
-private Category category;
+// @ManyToOne
+// @JoinColumn(name = "category_id")
+// // @JsonIgnore
+// private Category category;
 
 
     // @ManyToOne
