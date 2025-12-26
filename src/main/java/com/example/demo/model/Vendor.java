@@ -7,23 +7,16 @@ import java.util.*;
 @Entity
 @Table(name = "vendors")
 public class Vendor {
-
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @NotBlank @Column(unique = true)
     private String vendorName;
-
     @Email @NotBlank
     private String contactEmail;
-
     private String address;
-
     private LocalDateTime createdAt;
     @ManyToMany(mappedBy = "favoriteVendors")
     private Set<User> users = new HashSet<>();
-
-  
     @OneToMany(mappedBy = "vendor")
     private List<Invoice> invoices;
 

@@ -1,9 +1,6 @@
 package com.example.demo.exception;
-
 import java.time.LocalDateTime;
-
 public class ApiError {
-
     private int status;
     private String message;
     private LocalDateTime timestamp;
@@ -18,7 +15,7 @@ public class ApiError {
         this.message = message;
     }
 
-    // Getters and Setters
+  
     public int getStatus() { return status; }
     public void setStatus(int status) { this.status = status; }
 

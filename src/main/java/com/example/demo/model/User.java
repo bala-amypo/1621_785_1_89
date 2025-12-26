@@ -12,23 +12,17 @@ import java.util.*;
     }
 )
 public class User {
-
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @NotBlank
     private String fullName;
-
     @Email @NotBlank
     @Column(unique = true, nullable = false)
     private String email;
-
     @NotBlank
     private String password;
-
     @NotBlank
     private String role;
-
     private LocalDateTime createdAt;
     @ManyToMany
     @JoinTable(
@@ -38,10 +32,8 @@ public class User {
     )
     private Set<Vendor> favoriteVendors = new HashSet<>();
     @OneToMany(mappedBy = "uploadedBy")
-    private List<Invoice> invoices;
-    
+    private List<Invoice> invoices; 
     public User() {}
-
     public User(String fullName, String email, String password, String role,Set<Vendor> favoriteVendors) {
         this.fullName = fullName;
         this.email = email;
