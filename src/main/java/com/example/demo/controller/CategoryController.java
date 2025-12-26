@@ -1,27 +1,66 @@
+// package com.example.demo.controller;
+
+// import java.util.List;
+
+// import org.springframework.web.bind.annotation.*;
+
+// import com.example.demo.model.Category;
+// import com.example.demo.service.CategoryService;
+
+// import io.swagger.v3.oas.annotations.tags.Tag;
+
+// @RestController
+// @RequestMapping("/api/categories")
+// @Tag(name = "Categories Endpoints")
+// public class CategoryController {
+
+//     private final CategoryService categoryService;
+
+
+//     public CategoryController(CategoryService categoryService) {
+//         this.categoryService = categoryService;
+//     }
+
+ 
+//     @PostMapping
+//     public Category createCategory(@RequestBody Category category) {
+//         return categoryService.createCategory(category);
+//     }
+
+//     @GetMapping
+//     public List<Category> getAllCategories() {
+//         return categoryService.getAllCategories();
+//     }
+
+//     @GetMapping("git/{id}")
+//     public Category getCategoryById(@PathVariable Long id) {
+//         return categoryService.getCategory(id);
+//     }
+// }
+
+
+
+
+
 package com.example.demo.controller;
-
-import java.util.List;
-
-import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.model.Category;
 import com.example.demo.service.CategoryService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/categories")
-@Tag(name = "Categories Endpoints")
+@Tag(name = "Categories")
 public class CategoryController {
 
     private final CategoryService categoryService;
 
+    public CategoryController(CategoryService categoryService) { this.categoryService = categoryService; }
 
-    public CategoryController(CategoryService categoryService) {
-        this.categoryService = categoryService;
-    }
-
- 
     @PostMapping
     public Category createCategory(@RequestBody Category category) {
         return categoryService.createCategory(category);
@@ -32,12 +71,11 @@ public class CategoryController {
         return categoryService.getAllCategories();
     }
 
-    @GetMapping("git/{id}")
-    public Category getCategoryById(@PathVariable Long id) {
-        return categoryService.getCategory(id);
+    @GetMapping("/{categoryId}")
+    public Category getCategory(@PathVariable Long categoryId) {
+        return categoryService.getCategory(categoryId);
     }
 }
-
 
 
 
