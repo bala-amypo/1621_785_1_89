@@ -16,8 +16,8 @@ public class CategorizationRule {
 // private Category category;
 
 
-    // @ManyToOne
-    // private Category category;
+    @ManyToOne
+    private Category category;
     private LocalDateTime createdAt;
     @PrePersist
     public void prePersist() {
