@@ -1,6 +1,10 @@
 package com.example.demo.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+
+import jakarta.persistence.JoinColumn;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class CategorizationRule {
     @Id
@@ -10,14 +14,15 @@ public class CategorizationRule {
     private String matchType;
     private Integer priority;
 
-// @ManyToOne
-// @JoinColumn(name = "category_id")
-// // @JsonIgnore
-// private Category category;
-
-
     @ManyToOne
-    private Category category;
+@JoinColumn(name = "category_id")
+@JsonIgnore
+private Category category;
+
+
+
+    // @ManyToOne
+    // private Category category;
     private LocalDateTime createdAt;
     @PrePersist
     public void prePersist() {
