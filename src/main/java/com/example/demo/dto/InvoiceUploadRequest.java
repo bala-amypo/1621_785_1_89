@@ -1,7 +1,5 @@
 package com.example.demo.dto;
-
 import java.time.LocalDate;
-
 public class InvoiceUploadRequest {
 
     private String invoiceNumber;
