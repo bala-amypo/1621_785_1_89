@@ -1,60 +1,41 @@
-// package com.example.demo.config;
-// import org.springframework.context.annotation.Bean;
-// import org.springframework.context.annotation.Configuration;
-// import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-// import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-// import org.springframework.security.config.http.SessionCreationPolicy;
-// import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-// import org.springframework.security.crypto.password.PasswordEncoder;
-// import org.springframework.security.web.SecurityFilterChain;
-// import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+package com.example.demo.config;
 
-// @Configuration
-// @EnableWebSecurity
-// public class SecurityConfig {
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
-//     private final JwtUtil jwtUtil;
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
 
-//     public SecurityConfig(JwtUtil jwtUtil) {
-//         this.jwtUtil = jwtUtil;
-//     }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-//     @Bean
-//     public PasswordEncoder passwordEncoder() {
-//         return new BCryptPasswordEncoder();
-//     }
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-//     @Bean
-//     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(csrf -> csrf.disable())
+            .sessionManagement(session ->
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            )
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers(
+                    "/auth/**",
+                    "/swagger-ui/**",
+                    "/v3/api-docs/**",
+                    "/api/**"
+                ).permitAll()
+                .anyRequest().permitAll()
+            );
 
-//         http
-//             .csrf(csrf -> csrf.disable())
-//             .sessionManagement(session ->
-//                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//             )
-
-//             // ✅ ALLOW ALL REQUESTS (Swagger + APIs)
-//             .authorizeHttpRequests(auth -> auth
-//                 .requestMatchers(
-//                     "/auth/**",
-//                     "/swagger-ui/**",
-//                     "/v3/api-docs/**",
-//                     "/hello-servlet",
-//                     "/api/**"
-//                 ).permitAll()
-//                 .anyRequest().permitAll()
-//             );
-
-//         // ⚠️ JWT filter kept ONLY for bean/test compatibility
-//         // Not enforced for authorization
-//         http.addFilterBefore(jwtAuthenticationFilter(),
-//                 UsernamePasswordAuthenticationFilter.class);
-
-//         return http.build();
-//     }
-
-//     @Bean
-//     public JwtAuthenticationFilter jwtAuthenticationFilter() {
-//         return new JwtAuthenticationFilter(jwtUtil);
-//     }
-// }
+        return http.build();
+    }
+}
