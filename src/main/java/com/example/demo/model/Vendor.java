@@ -98,11 +98,11 @@ public class Vendor {
     private LocalDateTime createdAt;
 
     @ManyToMany(mappedBy = "favoriteVendors")
-    @JsonIgnore // 🔥 breaks User ↔ Vendor loop
+    @JsonIgnore
     private Set<User> users = new HashSet<>();
 
     @OneToMany(mappedBy = "vendor")
-    @JsonIgnore // 🔥 breaks Vendor ↔ Invoice loop
+    @JsonIgnore
     private List<Invoice> invoices;
 
     public Vendor() {}
@@ -112,6 +112,25 @@ public class Vendor {
         this.createdAt = LocalDateTime.now();
     }
 
-    // getters & setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getVendorName() { return vendorName; }
+    public void setVendorName(String vendorName) { this.vendorName = vendorName; }
+
+    public String getContactEmail() { return contactEmail; }
+    public void setContactEmail(String contactEmail) { this.contactEmail = contactEmail; }
+
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
+
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+    public Set<User> getUsers() { return users; }
+    public void setUsers(Set<User> users) { this.users = users; }
+
+    public List<Invoice> getInvoices() { return invoices; }
+    public void setInvoices(List<Invoice> invoices) { this.invoices = invoices; }
 }
 

@@ -88,7 +88,7 @@ public class Category {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "category")
-    @JsonIgnore // 🔥 breaks Category ↔ Invoice loop
+    @JsonIgnore
     private List<Invoice> invoices;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
@@ -101,5 +101,21 @@ public class Category {
         this.createdAt = LocalDateTime.now();
     }
 
-    // getters & setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getCategoryName() { return categoryName; }
+    public void setCategoryName(String categoryName) { this.categoryName = categoryName; }
+
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+    public List<Invoice> getInvoices() { return invoices; }
+    public void setInvoices(List<Invoice> invoices) { this.invoices = invoices; }
+
+    public List<CategorizationRule> getRules() { return rules; }
+    public void setRules(List<CategorizationRule> rules) { this.rules = rules; }
 }
