@@ -1,9 +1,37 @@
+// package com.example.demo.config;
+
+// import io.swagger.v3.oas.models.OpenAPI;
+// import io.swagger.v3.oas.models.servers.Server;
+// import org.springframework.context.annotation.Bean;
+// import org.springframework.context.annotation.Configuration;
+// import java.util.List;
+
+// @Configuration
+// public class SwaggerConfig {
+
+//     @Bean
+//     public OpenAPI customOpenAPI() {
+//         return new OpenAPI()
+//                 // You need to change the port as per your server
+//                 .servers(List.of(
+//                 new Server().url("https://9146.pro604cr.amypo.ai/")
+//                 ));
+//         }
+// }
+
+
+
+
 package com.example.demo.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.security.SecurityScheme;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import java.util.List;
 
 @Configuration
@@ -11,12 +39,25 @@ public class SwaggerConfig {
 
     @Bean
     public OpenAPI customOpenAPI() {
+
+        // 🔐 Define JWT Bearer Security Scheme
+        SecurityScheme bearerScheme = new SecurityScheme()
+                .type(SecurityScheme.Type.HTTP)
+                .scheme("bearer")
+                .bearerFormat("JWT")
+                .in(SecurityScheme.In.HEADER)
+                .name("Authorization");
+
         return new OpenAPI()
-                // You need to change the port as per your server
+                // ✅ KEEP YOUR EXISTING SERVER / PORT (unchanged)
                 .servers(List.of(
-                new Server().url("https://9146.pro604cr.amypo.ai/")
-                ));
-        }
+                        new Server().url("https://9146.pro604cr.amypo.ai/")
+                ))
+                // ✅ ADD SECURITY SCHEME
+                .components(new Components()
+                        .addSecuritySchemes("bearerAuth", bearerScheme))
+                // ✅ ENABLE AUTHORIZE BUTTON
+                .addSecurityItem(new SecurityRequirement()
+                        .addList("bearerAuth"));
+    }
 }
-
-
