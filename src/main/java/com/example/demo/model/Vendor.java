@@ -23,7 +23,7 @@ public class Vendor {
     @JsonIgnoreProperties("favoriteVendors")
     private Set<User> users = new HashSet<>();
     @OneToMany(mappedBy = "vendor")
-     @JsonIgnoreProperties("favoriteVendors")
+     @JsonIgnoreProperties("vendor")
     private List<Invoice> invoices;
 
     public Vendor() {}
