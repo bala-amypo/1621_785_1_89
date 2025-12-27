@@ -54,3 +54,52 @@
 //     public List<CategorizationRule> getRules() { return rules; }
 //     public void setRules(List<CategorizationRule> rules) { this.rules = rules; }
 // }
+
+
+
+
+
+
+
+
+
+package com.example.demo.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Entity
+@Table(name = "categories")
+public class Category {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank
+    @Column(unique = true)
+    private String categoryName;
+
+    private String description;
+    private LocalDateTime createdAt;
+
+    @OneToMany(mappedBy = "category")
+    @JsonIgnore // 🔥 breaks Category ↔ Invoice loop
+    private List<Invoice> invoices;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private List<CategorizationRule> rules;
+
+    public Category() {}
+
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = LocalDateTime.now();
+    }
+
+    // getters & setters
+}

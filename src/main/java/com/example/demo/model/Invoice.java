@@ -89,3 +89,61 @@
 
 
 
+
+package com.example.demo.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(
+    name = "invoices",
+    uniqueConstraints = @UniqueConstraint(columnNames = {"vendor_id", "invoiceNumber"})
+)
+public class Invoice {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "vendor_id", nullable = false)
+    private Vendor vendor;
+
+    @NotBlank
+    private String invoiceNumber;
+
+    @NotNull
+    @Positive
+    private Double amount;
+
+    @NotNull
+    private LocalDate invoiceDate;
+
+    private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    @JsonIgnore // 🔥 breaks Category ↔ Invoice loop
+    private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "uploaded_by_id", nullable = false)
+    @JsonIgnore // 🔥 breaks User ↔ Invoice loop
+    private User uploadedBy;
+
+    private LocalDateTime uploadedAt;
+
+    public Invoice() {}
+
+    @PrePersist
+    public void prePersist() {
+        this.uploadedAt = LocalDateTime.now();
+    }
+
+    // getters & setters
+}
