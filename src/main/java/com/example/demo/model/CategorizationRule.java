@@ -15,7 +15,7 @@ public class CategorizationRule {
     private Integer priority;
     @ManyToOne
     @JoinColumn(name = "category_id")
-    @JsonIgnore
+  //  @JsonIgnore
     private Category category;
     private LocalDateTime createdAt;
     @PrePersist

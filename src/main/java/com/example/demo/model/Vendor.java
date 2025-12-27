@@ -4,7 +4,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.*;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 
@@ -20,10 +20,10 @@ public class Vendor {
     private String address;
     private LocalDateTime createdAt;
     @ManyToMany(mappedBy = "favoriteVendors") 
-    @JsonIgnoreProperties("favoriteVendors")
+   // @JsonIgnoreProperties("favoriteVendors")
     private Set<User> users = new HashSet<>();
     @OneToMany(mappedBy = "vendor")
-     @JsonIgnoreProperties("vendor")
+   //  @JsonIgnoreProperties("vendor")
     private List<Invoice> invoices;
 
     public Vendor() {}
