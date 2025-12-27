@@ -20,7 +20,7 @@ public class Vendor {
     private String address;
     private LocalDateTime createdAt;
     @ManyToMany(mappedBy = "favoriteVendors") 
-    @JsonIgnoreProperties("favouriteVendors")
+    @JsonIgnoreProperties("favoriteVendors")
     private Set<User> users = new HashSet<>();
     @OneToMany(mappedBy = "vendor")
     private List<Invoice> invoices;
