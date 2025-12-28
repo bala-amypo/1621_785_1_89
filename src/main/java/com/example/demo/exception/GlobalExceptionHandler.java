@@ -19,9 +19,9 @@
 // }
 
 
-
 package com.example.demo.exception;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -32,30 +32,30 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ApiError> handleResourceNotFound(ResourceNotFoundException ex) {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("X-Exception-Type", "ResourceNotFoundException");
+
         ApiError error = new ApiError(
                 HttpStatus.NOT_FOUND.value(),
                 ex.getMessage()
         );
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+
+        return new ResponseEntity<>(error, headers, HttpStatus.NOT_FOUND);
     }
 
-    // 👇 Handles "Email already in use" WITHOUT changing service code
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiError> handleException(Exception ex) {
 
-        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
-
-        // Message-based mapping (TEST SAFE)
-        if (ex.getMessage() != null &&
-            ex.getMessage().toLowerCase().contains("email already")) {
-            status = HttpStatus.CONFLICT;
-        }
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("X-Exception-Type", ex.getClass().getSimpleName());
 
         ApiError error = new ApiError(
-                status.value(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 ex.getMessage()
         );
 
-        return new ResponseEntity<>(error, status);
+        return new ResponseEntity<>(error, headers, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
+
